@@ -1,7 +1,12 @@
 // إعداد المشهد والكاميرا والرندر
 const scene = new THREE.Scene();
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
-const renderer = new THREE.WebGLRenderer({antialias:true});
+const camera = new THREE.PerspectiveCamera(
+  75,
+  window.innerWidth / window.innerHeight,
+  0.1,
+  1000
+);
+const renderer = new THREE.WebGLRenderer({ antialias: true });
 renderer.setSize(window.innerWidth, window.innerHeight);
 document.body.appendChild(renderer.domElement);
 
@@ -16,9 +21,6 @@ camera.position.z = 5;
 // زر تحميل OBJ
 const button = document.createElement("button");
 button.innerText = "Download OBJ";
-button.style.position = "absolute";
-button.style.top = "50px";
-button.style.left = "20px";
 document.body.appendChild(button);
 
 button.addEventListener("click", () => {
