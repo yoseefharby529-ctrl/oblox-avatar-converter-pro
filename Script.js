@@ -15,7 +15,8 @@ document.getElementById("converter-form").addEventListener("submit", async funct
 
     if (data.data && data.data.length > 0) {
       const userId = data.data[0].id;
-      resultDiv.innerHTML = `✅ User ID: ${userId}`;
+      const avatarUrl = `https://www.roblox.com/headshot-thumbnail/image?userId=${userId}&width=150&height=150&format=png`;
+      resultDiv.innerHTML = `<img src="${avatarUrl}" alt="Avatar"> <p>✅ User ID: ${userId}</p>`;
     } else {
       resultDiv.innerHTML = "❌ Username not found!";
     }
