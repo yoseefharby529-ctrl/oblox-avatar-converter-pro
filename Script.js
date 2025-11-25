@@ -12,7 +12,7 @@ window.onload = function () {
   renderer.setClearColor(0x222222);
   document.body.appendChild(renderer.domElement);
 
-  // نموذج مبدئي (مكعب) لحد ما نجيب الأفاتار
+  // مكعب تجريبي مؤقت
   const geometry = new THREE.BoxGeometry(1, 1, 1);
   const material = new THREE.MeshNormalMaterial();
   const cube = new THREE.Mesh(geometry, material);
