@@ -3,10 +3,8 @@
   <head>
     <meta charset="UTF-8">
     <title>Roblox 3D Converter</title>
-    <link rel="stylesheet" href="style.css">
     <style>
       body { margin: 0; background: #111; color: #eee; font-family: Arial; }
-      canvas { display: block; }
       #controls { position: absolute; top: 20px; left: 20px; z-index: 2; }
       input, button { padding: 8px; margin: 5px; }
       button { background: #00aa00; color: white; border: none; cursor: pointer; }
@@ -15,11 +13,14 @@
   <body>
     <div id="controls">
       <h1>Roblox 3D Converter</h1>
+      <!-- خانة إدخال الاسم -->
       <form id="converter-form">
         <input type="text" id="username" placeholder="Enter Roblox username">
         <button type="submit">عرض اللاعب</button>
       </form>
+      <!-- مكان عرض النتيجة -->
       <div id="result"></div>
+      <!-- زر تحميل OBJ -->
       <button id="downloadBtn">Download OBJ</button>
     </div>
 
