@@ -1,26 +1,38 @@
-document.getElementById("converter-form").addEventListener("submit", async function(e) {
-  e.preventDefault();
+// إعداد المشهد والكاميرا والرندر
+const scene = new THREE.Scene();
+const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+const renderer = new THREE.WebGLRenderer();
+renderer.setSize(window.innerWidth, window.innerHeight);
+document.body.appendChild(renderer.domElement);
 
-  const username = document.getElementById("username").value;
-  const resultDiv = document.getElementById("result");
+// نموذج تجريبي (مكعب)
+const geometry = new THREE.BoxGeometry();
+const material = new THREE.MeshBasicMaterial({ color: 0x00ff00 });
+const cube = new THREE.Mesh(geometry, material);
+scene.add(cube);
 
-  try {
-    const response = await fetch("https://users.roblox.com/v1/usernames/users", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ usernames: [username] })
-    });
+camera.position.z = 5;
 
-    const data = await response.json();
+// زر تحميل OBJ
+const button = document.createElement("button");
+button.innerText = "Download OBJ";
+document.body.appendChild(button);
 
-    if (data.data && data.data.length > 0) {
-      const userId = data.data[0].id;
-      const avatarUrl = `https://www.roblox.com/headshot-thumbnail/image?userId=${userId}&width=150&height=150&format=png`;
-      resultDiv.innerHTML = `<img src="${avatarUrl}" alt="Avatar"> <p>✅ User ID: ${userId}</p>`;
-    } else {
-      resultDiv.innerHTML = "❌ Username not found!";
-    }
-  } catch (error) {
-    resultDiv.innerHTML = "⚠️ Error fetching data.";
-  }
+button.addEventListener("click", () => {
+  const exporter = new THREE.OBJExporter();
+  const result = exporter.parse(cube); // لاحقًا نستبدل المكعب بالأفاتار
+  const blob = new Blob([result], { type: "text/plain" });
+  const link = document.createElement("a");
+  link.href = URL.createObjectURL(blob);
+  link.download = "avatar.obj";
+  link.click();
 });
+
+// حلقة الرندر
+function animate() {
+  requestAnimationFrame(animate);
+  cube.rotation.x += 0.01;
+  cube.rotation.y += 0.01;
+  renderer.render(scene, camera);
+}
+animate();
