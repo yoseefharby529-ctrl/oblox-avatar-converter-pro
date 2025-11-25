@@ -1,27 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ar">
   <head>
     <meta charset="UTF-8">
-    <title>Roblox 3D Converter</title>
+    <title>محول روبلوكس ثلاثي الأبعاد</title>
     <style>
       body { margin: 0; background: #111; color: #eee; font-family: Arial; }
       #controls { position: absolute; top: 20px; left: 20px; z-index: 2; }
       input, button { padding: 8px; margin: 5px; }
       button { background: #00aa00; color: white; border: none; cursor: pointer; }
+      #viewer { margin-top: 20px; }
     </style>
   </head>
   <body>
     <div id="controls">
-      <h1>Roblox 3D Converter</h1>
-      <!-- خانة إدخال الاسم -->
+      <h1>محول روبلوكس ثلاثي الأبعاد</h1>
+      
+      <!-- خانة كتابة الاسم -->
       <form id="converter-form">
-        <input type="text" id="username" placeholder="Enter Roblox username">
+        <input type="text" id="username" placeholder="اكتب اسم اللاعب هنا">
         <button type="submit">عرض اللاعب</button>
       </form>
+      
       <!-- مكان عرض النتيجة -->
       <div id="result"></div>
+      
       <!-- زر تحميل OBJ -->
-      <button id="downloadBtn">Download OBJ</button>
+      <button id="downloadBtn">تحميل OBJ</button>
+      
+      <!-- مكان عرض الأفاتار 3D -->
+      <div id="viewer"></div>
     </div>
 
     <!-- مكتبة Three.js -->
