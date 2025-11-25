@@ -10,7 +10,7 @@ window.onload = function () {
   const renderer = new THREE.WebGLRenderer({ antialias: true });
   renderer.setSize(window.innerWidth, window.innerHeight);
   renderer.setClearColor(0x222222);
-  document.body.appendChild(renderer.domElement);
+  document.getElementById("viewer").appendChild(renderer.domElement);
 
   // مكعب تجريبي مؤقت
   const geometry = new THREE.BoxGeometry(1, 1, 1);
@@ -51,10 +51,10 @@ window.onload = function () {
         resultDiv.innerHTML = `✅ User ID: ${userId}`;
         // هنا لاحقًا هنجيب الأفاتار 3D ونبدل المكعب
       } else {
-        resultDiv.innerHTML = "❌ Username not found!";
+        resultDiv.innerHTML = "❌ اسم اللاعب غير موجود!";
       }
     } catch (error) {
-      resultDiv.innerHTML = "⚠️ Error fetching data.";
+      resultDiv.innerHTML = "⚠️ خطأ أثناء جلب البيانات.";
     }
   });
 
