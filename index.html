@@ -3,23 +3,25 @@
   <head>
     <meta charset="UTF-8">
     <title>Roblox 3D Converter</title>
+    <link rel="stylesheet" href="style.css">
     <style>
-      body { margin: 0; background: #111; color: #eee; }
+      body { margin: 0; background: #111; color: #eee; font-family: Arial; }
       canvas { display: block; }
-      button {
-        position: absolute;
-        top: 60px;
-        left: 20px;
-        padding: 10px 20px;
-        background: #00aa00;
-        color: white;
-        border: none;
-        cursor: pointer;
-      }
+      #controls { position: absolute; top: 20px; left: 20px; z-index: 2; }
+      input, button { padding: 8px; margin: 5px; }
+      button { background: #00aa00; color: white; border: none; cursor: pointer; }
     </style>
   </head>
   <body>
-    <h1 style="position:absolute;top:10px;left:20px;">Roblox 3D Converter</h1>
+    <div id="controls">
+      <h1>Roblox 3D Converter</h1>
+      <form id="converter-form">
+        <input type="text" id="username" placeholder="Enter Roblox username">
+        <button type="submit">عرض اللاعب</button>
+      </form>
+      <div id="result"></div>
+      <button id="downloadBtn">Download OBJ</button>
+    </div>
 
     <!-- مكتبة Three.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
